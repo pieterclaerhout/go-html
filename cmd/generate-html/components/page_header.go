@@ -35,16 +35,12 @@ func (pageHeader *PageHeader) HTML(minified bool) string {
 	root := html.Blocks{
 		html.Div(
 			html.Class("page-header"),
-			html.Elem(
-				"table", nil,
-				html.Elem(
-					"tr", nil,
-					html.Elem(
-						"td", nil,
+			html.Table(nil,
+				html.Tr(nil,
+					html.Td(nil,
 						html.Img(html.Src(pageHeader.IconURL).Class("app-icon-left shadow").Alt(pageHeader.Title)),
 					),
-					html.Elem(
-						"td", nil,
+					html.Td(nil,
 						html.H1(nil, html.Text(pageHeader.Title)),
 						html.H3(nil, html.Text(pageHeader.Subtitle)),
 					),

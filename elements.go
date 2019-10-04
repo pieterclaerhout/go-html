@@ -151,3 +151,35 @@ func Select(attr Attributes, children ...Block) Block {
 func Option(attr Attributes, children ...Block) Block {
 	return newElement("option", attr, children, NoWhitespace)
 }
+
+func Table(attr Attributes, children ...Block) Block {
+	return newElement("table", attr, children, 0)
+}
+
+func Thead(attr Attributes, children ...Block) Block {
+	return newElement("thead", attr, children, 0)
+}
+
+func Th(attr Attributes, children ...Block) Block {
+	return newElement("th", attr, children, 0)
+}
+
+func Tbody(attr Attributes, children ...Block) Block {
+	return newElement("tbody", attr, children, 0)
+}
+
+func Tr(attr Attributes, children ...Block) Block {
+	return newElement("tr", attr, children, 0)
+}
+
+func Td(attr Attributes, children ...Block) Block {
+	return newElement("td", attr, children, 0)
+}
+
+func Tfoot(attr Attributes, children ...Block) Block {
+	return newElement("tfoot", attr, children, 0)
+}
+
+func Article(attr Attributes, children ...Block) Block {
+	return newElement("article", attr, children, 0)
+}
