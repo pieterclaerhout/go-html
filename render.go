@@ -45,22 +45,6 @@ func (URL) RenderHTML() Block          { return nil }
 
 var indentation = 2
 
-type Blocks []Block
-
-func (b *Blocks) Add(block Block) {
-	*b = append(*b, block)
-}
-
-func (b *Blocks) AddBlocks(blocks Blocks) {
-	*b = append(*b, blocks...)
-}
-
-func (Blocks) RenderHTML() Block { return nil }
-
-type Block interface {
-	RenderHTML() Block
-}
-
 type stringRenderer interface {
 	renderString() string
 }
@@ -227,43 +211,4 @@ func renderHTML(c Block, w io.Writer, ctx *renderCtx) error {
 		ctx.next()
 	}
 	return nil
-}
-
-type Attributes []AttrPair
-type AttrPair struct {
-	Key   string
-	Value interface{}
-}
-
-type Element struct {
-	Type string
-	Attributes
-	Children Blocks
-	Options  ElementOption
-}
-
-func (Element) RenderHTML() Block { return nil }
-
-type ElementOption int8
-
-const (
-	Void ElementOption = 1 << iota
-	SelfClose
-	CSSElement
-	JSElement
-	NoWhitespace
-)
-
-func newElement(el string, attr Attributes, children []Block, opt ElementOption) Block {
-	if len(children) == 0 {
-		return Element{el, attr, nil, opt}
-	}
-	if len(children) == 1 {
-		return Element{el, attr, children, opt}
-	}
-	return Element{el, attr, Blocks(children), opt}
-}
-
-func Elem(el string, attr Attributes, children ...Block) Block {
-	return newElement(el, attr, children, 0)
 }

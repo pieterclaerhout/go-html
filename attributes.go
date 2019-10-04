@@ -1,9 +1,20 @@
 package html
 
+// Attributes defines a list of attribute pairs
+type Attributes []AttrPair
+
+// AttrPair defines a n attribute key and value pair
+type AttrPair struct {
+	Key   string
+	Value interface{}
+}
+
+// Attr returns an attribute pair with the given key and value
 func Attr(key string, value interface{}) Attributes {
 	return Attributes{AttrPair{Key: key, Value: value}}
 }
 
+// Attr adds an attribute to the list of attribute pairs
 func (a Attributes) Attr(key string, id interface{}) Attributes {
 	return append(a, AttrPair{Key: key, Value: id})
 }
