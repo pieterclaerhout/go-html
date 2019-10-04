@@ -20,7 +20,7 @@ type PageHeader struct {
 //       <td>
 //         <h1>
 //           Title
-//         </h1>
+//         </h1> d
 //         <h3>
 //           Subtitle
 //         </h3>
@@ -53,6 +53,6 @@ func (pageHeader *PageHeader) HTML(minified bool) string {
 		),
 	}
 
-	return render(root, minified)
+	return html.Render(root, minified)
 
 }

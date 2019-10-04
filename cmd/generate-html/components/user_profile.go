@@ -33,6 +33,6 @@ func (userProfile *UserProfile) HTML(minified bool) string {
 		),
 	}
 
-	return render(root, minified)
+	return html.Render(root, minified)
 
 }

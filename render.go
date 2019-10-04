@@ -10,6 +10,17 @@ import (
 
 var renderDebug = true
 
+func Render(blocks Block, minified bool) string {
+
+	f := RenderString
+	if minified {
+		f = RenderMinifiedString
+	}
+	output, _ := f(blocks)
+	return output
+
+}
+
 type UnsafeString string
 type Text string
 type Comment string
@@ -54,7 +65,7 @@ type stringRenderer interface {
 	renderString() string
 }
 
-func Render(root Block, w io.Writer) error {
+func RenderToWriter(w io.Writer, root Block) error {
 	err := renderHTML(root, w, &renderCtx{})
 	if err != nil {
 		return err

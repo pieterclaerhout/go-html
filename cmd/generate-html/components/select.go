@@ -59,6 +59,6 @@ func (b *MySelectBuilder) HTML(minified bool) string {
 		html.Select(nil, options...),
 	}
 
-	return render(root, minified)
+	return html.Render(root, minified)
 
 }
