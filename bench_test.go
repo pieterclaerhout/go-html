@@ -9,7 +9,7 @@ import (
 	"testing"
 )
 
-func TestHTMLTemplate(t *testing.T) {
+func TestHTMLTemplate(_ *testing.T) {
 	renderTemplate(false)
 }
 
@@ -19,7 +19,7 @@ func BenchmarkHTMLTemplate(b *testing.B) {
 	}
 }
 
-func TestBlocks(t *testing.T) {
+func TestBlocks(_ *testing.T) {
 	renderBlocks(false)
 }
 
